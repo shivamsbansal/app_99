@@ -1,7 +1,7 @@
 
 class Api::V1::Users::ApiUsersController < Api::BaseApiController
   skip_before_action :verify_authenticity_token
-  before_filter :find_user, only: [:show, :update]
+  before_filter :find_user, only: [:show, :update, :delete]
 
   before_filter only: :update do
     unless params[:new_name]
@@ -39,6 +39,12 @@ class Api::V1::Users::ApiUsersController < Api::BaseApiController
         render json: @user
     else
         render nothing: true, status: :bad_request
+    end
+  end
+
+   def delete
+    if @user.destroy
+      render nothing: true, status: :ok
     end
   end
 

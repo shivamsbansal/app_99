@@ -7,6 +7,7 @@ Rails.application.routes.draw do
         post '/' => 'api_users#create'
         get '/:name/' => 'api_users#show'
         put '/:name/' => 'api_users#update'
+        delete '/:name' => 'api_users#delete'
       end
     end
   end
