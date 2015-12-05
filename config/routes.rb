@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
 
-  scope '/api' do
-    scope '/v1' do
-      scope '/users' do
+  namespace :api do
+    namespace :v1 do
+      namespace :users do
         get '/' => 'api_users#index'
         post '/' => 'api_users#create'
-        scope '/:name' do
-          get '/' => 'api_users#show'
-          put '/' => 'api_users#update'
-        end
+        get '/:name/' => 'api_users#show'
+        put '/:name/' => 'api_users#update'
       end
     end
   end
