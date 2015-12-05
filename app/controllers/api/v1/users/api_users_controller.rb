@@ -1,6 +1,6 @@
 
 class Api::V1::Users::ApiUsersController < Api::BaseApiController
-  skip_before_action :verify_authenticity_token
+  protect_from_forgery with: :null_session
   before_filter :find_user, only: [:show, :update, :delete]
 
   before_filter only: :update do
